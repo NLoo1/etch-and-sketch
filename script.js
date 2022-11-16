@@ -37,8 +37,8 @@ function newSize(){
     let slotX = 400/sizeX;
     let slotY = 400/sizeY;
 
-    let x = document.styleSheets[0];
-    x.insertRule('.grid-slot{width: slotX; height:slotY', 0)
+    // let x = document.styleSheets[0];
+    // x.insertRule('.grid-slot{width: slotX; height:slotY', 0)
 
 
     document.getElementById("grid-container").innerHTML = "";
@@ -51,9 +51,18 @@ function newSize(){
         document.getElementById('grid-container').append(d);
     }
 
-    
+    let x =  document.getElementsByClassName('grid-slot');
+    for(let i = 0; i < x.length; i++){
+        x[i].style.width = slotX+"px";
+        x[i].style.height = slotY+"px";
+    }    
 
-    
+    let a = document.getElementById('grid-container');
+
+    // grid-template-columns: repeat(16, 25px);
+
+    a.style.gridTemplateRows = `repeat(${sizeX}, ${slotX}px)`;
+    a.style.gridTemplateColumns = `repeat(${sizeY}, ${slotY}px)`;
 
 
 }
